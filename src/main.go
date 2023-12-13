@@ -45,3 +45,12 @@ func newSimpleServer(addr string) *simpleServer {
 		proxy: httputil.NewSingleHostReverseProxy(serverUrl),
 	}
 }
+
+// step 5 creating a function for loadbalancer
+func NewLoadBalancer(port string, servers []Server) *LoadBalancer {
+	return &LoadBalancer{
+		roundRobinCount: 0,
+		port:            port,
+		servers:         servers,
+	}
+}
